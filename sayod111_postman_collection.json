@@ -1,0 +1,78 @@
+{
+  "info": {
+    "name": "SAYOD 111 public samples",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "API health",
+      "request": {
+        "method": "GET",
+        "url": "https://api.sayod111.com/v1/health"
+      }
+    },
+    {
+      "name": "Feed freshness",
+      "request": {
+        "method": "GET",
+        "url": "https://api.sayod111.com/v1/freshness"
+      }
+    },
+    {
+      "name": "US SEC Form D offerings",
+      "request": {
+        "method": "GET",
+        "url": "https://sayod111.com/samples/formd.csv"
+      }
+    },
+    {
+      "name": "US federal award expirations",
+      "request": {
+        "method": "GET",
+        "url": "https://sayod111.com/samples/govcon.csv"
+      }
+    },
+    {
+      "name": "US investment advisers",
+      "request": {
+        "method": "GET",
+        "url": "https://sayod111.com/samples/ria.csv"
+      }
+    },
+    {
+      "name": "UK and EU tender notices",
+      "request": {
+        "method": "GET",
+        "url": "https://sayod111.com/samples/tenders.csv"
+      }
+    },
+    {
+      "name": "US motor carriers",
+      "request": {
+        "method": "GET",
+        "url": "https://sayod111.com/samples/fmcsa.csv"
+      }
+    },
+    {
+      "name": "Biotech funding and regulatory events",
+      "request": {
+        "method": "GET",
+        "url": "https://sayod111.com/samples/biotech.csv"
+      }
+    },
+    {
+      "name": "Storefront technology observations",
+      "request": {
+        "method": "GET",
+        "url": "https://sayod111.com/samples/ecom.csv"
+      }
+    },
+    {
+      "name": "Public trust and mail policy observations",
+      "request": {
+        "method": "GET",
+        "url": "https://sayod111.com/samples/cyber.csv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{"phy_state": "PA", "carrier_operation": "A", "power_units": 2, "total_drivers": 1}
+{"phy_state": "CA", "carrier_operation": "A", "power_units": 1, "total_drivers": 1}
+{"phy_state": "NV", "carrier_operation": "A", "power_units": 2, "total_drivers": 2}
+{"phy_state": "IA", "carrier_operation": "A", "power_units": 1, "total_drivers": 1}
+{"phy_state": "SC", "carrier_operation": "A", "power_units": 2, "total_drivers": 2}
+{"phy_state": "IL", "carrier_operation": "A", "power_units": 1, "total_drivers": 1}
+{"phy_state": "NE", "carrier_operation": "A", "power_units": 1, "total_drivers": 1}
+{"phy_state": "CA", "carrier_operation": "A", "power_units": 1, "total_drivers": 4}
+{"phy_state": "MI", "carrier_operation": "A", "power_units": 1, "total_drivers": 2}
+{"phy_state": "GA", "carrier_operation": "A", "power_units": 1, "total_drivers": 1}
+{"phy_state": "WV", "carrier_operation": "A", "power_units": 1, "total_drivers": 2}
+{"phy_state": "GA", "carrier_operation": "A", "power_units": 1, "total_drivers": 12}
