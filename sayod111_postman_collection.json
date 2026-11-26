@@ -1,77 +1,121 @@
 {
   "info": {
-    "name": "SAYOD 111 public samples",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "name": "SAYOD 111 Sovereign Commercial Intelligence API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Eight live public-source intelligence networks + Stateless MCP. Data Room: https://sayod111.com/data-room"
   },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sayod111.com"
+    },
+    {
+      "key": "apiKey",
+      "value": "YOUR_SAYOD111_API_KEY"
+    }
+  ],
   "item": [
     {
-      "name": "API health",
+      "name": "Platform Health & Counts",
       "request": {
         "method": "GET",
-        "url": "https://api.sayod111.com/v1/health"
+        "url": "{{baseUrl}}/v1/health"
       }
     },
     {
-      "name": "Feed freshness",
+      "name": "Dataset Freshness Ledger",
       "request": {
         "method": "GET",
-        "url": "https://api.sayod111.com/v1/freshness"
+        "url": "{{baseUrl}}/v1/freshness"
       }
     },
     {
-      "name": "US SEC Form D offerings",
+      "name": "SEC Form D Funded Startups",
       "request": {
         "method": "GET",
-        "url": "https://sayod111.com/samples/formd.csv"
+        "url": "{{baseUrl}}/v1/public/form-d?operating_only=1&limit=10"
       }
     },
     {
-      "name": "US federal award expirations",
+      "name": "U.S. Federal Recompetes ($500K+)",
       "request": {
         "method": "GET",
-        "url": "https://sayod111.com/samples/govcon.csv"
+        "url": "{{baseUrl}}/v1/public/recompetes?min_usd=500000&limit=10"
       }
     },
     {
-      "name": "US investment advisers",
+      "name": "SEC Form ADV RIA Search",
       "request": {
         "method": "GET",
-        "url": "https://sayod111.com/samples/ria.csv"
+        "url": "{{baseUrl}}/v1/public/ria-search?q=Vanguard&limit=10"
       }
     },
     {
-      "name": "UK and EU tender notices",
+      "name": "Biotech, NIH & FDA Signals",
       "request": {
         "method": "GET",
-        "url": "https://sayod111.com/samples/tenders.csv"
+        "url": "{{baseUrl}}/v1/public/biotech?limit=10"
       }
     },
     {
-      "name": "US motor carriers",
+      "name": "DOT FMCSA Commercial Fleets",
       "request": {
         "method": "GET",
-        "url": "https://sayod111.com/samples/fmcsa.csv"
+        "url": "{{baseUrl}}/v1/public/fmcsa?limit=10"
       }
     },
     {
-      "name": "Biotech funding and regulatory events",
+      "name": "EU TED & UK Find a Tender",
       "request": {
         "method": "GET",
-        "url": "https://sayod111.com/samples/biotech.csv"
+        "url": "{{baseUrl}}/v1/public/eu-tenders?limit=10"
       }
     },
     {
-      "name": "Storefront technology observations",
+      "name": "Live Tri-State Storefront Audit",
       "request": {
-        "method": "GET",
-        "url": "https://sayod111.com/samples/ecom.csv"
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"domain\": \"coros.com\", \"mode\": \"shopify\"}"
+        },
+        "url": "{{baseUrl}}/v1/public/live-audit"
       }
     },
     {
-      "name": "Public trust and mail policy observations",
+      "name": "Live Tri-State DMARC Audit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"domain\": \"linear.app\", \"mode\": \"dmarc\"}"
+        },
+        "url": "{{baseUrl}}/v1/public/live-audit"
+      }
+    },
+    {
+      "name": "Authenticated Account Status",
       "request": {
         "method": "GET",
-        "url": "https://sayod111.com/samples/cyber.csv"
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{apiKey}}"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/account/me"
       }
     }
   ]

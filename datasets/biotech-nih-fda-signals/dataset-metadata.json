@@ -1,0 +1,10 @@
+{
+  "title": "Life Sciences, NIH Grants, ClinicalTrials & openFD",
+  "id": "sayod111/biotech-nih-fda-signals",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "description": "PII-free public sample from SAYOD 111 Commercial Intelligence (https://sayod111.com/data-room)."
+}

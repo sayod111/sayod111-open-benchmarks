@@ -1,0 +1,10 @@
+{
+  "title": "U.S. DOT FMCSA Authorized Commercial Motor Carrier",
+  "id": "sayod111/us-dot-fmcsa-freight",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "description": "PII-free public sample from SAYOD 111 Commercial Intelligence (https://sayod111.com/data-room)."
+}

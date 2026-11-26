@@ -1,0 +1,10 @@
+{
+  "title": "Enterprise B2B SaaS DMARC Enforcement & Trust Cent",
+  "id": "sayod111/saas-dmarc-security",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0"
+    }
+  ],
+  "description": "PII-free public sample from SAYOD 111 Commercial Intelligence (https://sayod111.com/dmarc-scorecard)."
+}

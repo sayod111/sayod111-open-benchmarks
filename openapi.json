@@ -1,0 +1,250 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SAYOD 111 Sovereign Commercial Intelligence API",
+    "version": "1.5.0",
+    "description": "Eight live public-source commercial and regulatory intelligence networks with strict Tri-State Null Integrity (DETECTED, NOT_DETECTED, AUDIT_FAILED -> null).",
+    "contact": {
+      "name": "SAYOD 111 Principal Desk",
+      "email": "data@sayod111.com",
+      "url": "https://sayod111.com/data-room"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.sayod111.com",
+      "description": "Cloudflare Edge Production API"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "SAYOD 111 API Key (dp_live_... or dp_eval_...)"
+      }
+    }
+  },
+  "paths": {
+    "/v1/health": {
+      "get": {
+        "summary": "Platform health and 8-network index counts",
+        "responses": {
+          "200": {
+            "description": "Healthy"
+          }
+        }
+      }
+    },
+    "/v1/freshness": {
+      "get": {
+        "summary": "UTC synchronization timestamps across all 8 feeds",
+        "responses": {
+          "200": {
+            "description": "Freshness ledger"
+          }
+        }
+      }
+    },
+    "/v1/public/form-d": {
+      "get": {
+        "summary": "SEC EDGAR Form D operating startup raises",
+        "parameters": [
+          {
+            "name": "operating_only",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Form D filings"
+          }
+        }
+      }
+    },
+    "/v1/public/recompetes": {
+      "get": {
+        "summary": "Expiring U.S. Federal Recompete contracts ($500K+)",
+        "parameters": [
+          {
+            "name": "min_usd",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 500000
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expiring awards"
+          }
+        }
+      }
+    },
+    "/v1/public/ria-search": {
+      "get": {
+        "summary": "Search 12,019+ SEC Form ADV RIAs & Item 11 flags",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching RIAs"
+          }
+        }
+      }
+    },
+    "/v1/public/biotech": {
+      "get": {
+        "summary": "NIH, ClinicalTrials.gov and openFDA life-sciences signals",
+        "responses": {
+          "200": {
+            "description": "Biotech signals"
+          }
+        }
+      }
+    },
+    "/v1/public/fmcsa": {
+      "get": {
+        "summary": "DOT FMCSA authorized commercial motor carrier fleets",
+        "responses": {
+          "200": {
+            "description": "Carrier fleets"
+          }
+        }
+      }
+    },
+    "/v1/public/eu-tenders": {
+      "get": {
+        "summary": "UK Find a Tender and EU TED procurement notices",
+        "responses": {
+          "200": {
+            "description": "Procurement notices"
+          }
+        }
+      }
+    },
+    "/v1/public/live-audit": {
+      "post": {
+        "summary": "Live passive Tri-State domain audit (shopify, dmarc, trust)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "domain": {
+                    "type": "string"
+                  },
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "shopify",
+                      "dmarc",
+                      "trust"
+                    ]
+                  }
+                },
+                "required": [
+                  "domain",
+                  "mode"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tri-State audit result"
+          }
+        }
+      }
+    },
+    "/v1/batch-audit": {
+      "post": {
+        "summary": "Authenticated 50-domain batch Tri-State audit",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Batch audit rows"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/v1/eval-key": {
+      "post": {
+        "summary": "Issue 14-day corporate evaluation sandbox key (corporate work email required)",
+        "responses": {
+          "200": {
+            "description": "Evaluation key issued"
+          },
+          "422": {
+            "description": "Free webmail rejected"
+          }
+        }
+      }
+    },
+    "/v1/account/me": {
+      "get": {
+        "summary": "Inspect authenticated license tier and remaining quota",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account metadata"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  }
+}
